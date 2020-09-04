@@ -1,4 +1,4 @@
-Task management project using
+**Task management** project using next technologies and patterns:
  - NestJS 
  - hexagonal architecture
  - monads
