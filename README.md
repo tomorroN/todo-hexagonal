@@ -1,4 +1,4 @@
-Task managements project using
+Task management project using
  - NestJS 
  - hexagonal architecture
  - monads
