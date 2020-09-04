@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-task-management",
+  "name": "nestjs-task-management-hexagonal",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -24,10 +24,10 @@
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
-    "@types/uuid": "^7.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.4",
+    "uuidv4": "^6.2.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
