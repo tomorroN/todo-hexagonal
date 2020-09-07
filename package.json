@@ -5,6 +5,9 @@
   "author": "",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -18,7 +21,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:unit": "jest --config ./test/unit/jest-unit.json"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
