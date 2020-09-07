@@ -1,6 +1,6 @@
-import { PatchTask, TaskId, TaskStatus } from '../../entities/task.entity';
+import { TaskPatch, TaskId, TaskStatus } from '../../entities/task.entity';
 
-export class PatchTaskCommand implements PatchTask {
+export class PatchTaskCommand implements TaskPatch {
   constructor(
     private readonly _taskId: TaskId,
     private readonly _title?: string,

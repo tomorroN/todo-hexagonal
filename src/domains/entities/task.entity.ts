@@ -1,9 +1,8 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 export type TaskId = string;
 
 export const enum TaskStatus {
-  TODO = 'TODO',
   IN_PROGRESS = 'IN_PROGRESS',
   DONE = 'DONE',
 }
@@ -12,7 +11,7 @@ export interface TaskFrom {
   title: string;
 }
 
-export interface PatchTask {
+export interface TaskPatch {
   title?: string;
   status?: TaskStatus;
 }
@@ -26,16 +25,33 @@ export class TaskEntity {
   ) {
   }
 
+
+  get id(): TaskId {
+    return this._id;
+  }
+
+  get title(): string {
+    return this._title;
+  }
+
+  get status(): TaskStatus {
+    return this._status;
+  }
+
+  get createdAt(): number {
+    return this._createdAt;
+  }
+
   static from({ title }: TaskFrom): TaskEntity {
     return new TaskEntity(
-      uuid(),
+      uuidv4(),
       title,
-      TaskStatus.TODO,
+      TaskStatus.IN_PROGRESS,
       Date.now()
     );
   }
 
-  patch({ status, title }: PatchTask) {
+  patch({ status, title }: TaskPatch) {
     if (title) {
       this._title = title;
     }
