@@ -1,7 +1,9 @@
 import { TaskEntity, TaskStatus } from '../../../../src/domains/entities/task.entity';
 
 describe('TaskEntity', () => {
+
   describe('from', () => {
+
     it('Should create TaskEntity', () => {
       const title = 'title';
       const taskEntity = TaskEntity.from({ title });
@@ -14,6 +16,7 @@ describe('TaskEntity', () => {
       expect(taskEntity.title).toEqual(title);
       expect(taskEntity.status).toEqual(TaskStatus.IN_PROGRESS);
     });
+
   });
 
   describe('patch', () => {
@@ -28,21 +31,21 @@ describe('TaskEntity', () => {
     });
 
     it('Should patch title', () => {
-      taskEntity.patch({title});
+      taskEntity.patch({ title });
 
       expect(taskEntity.title).toEqual(title);
       expect(taskEntity.status).toEqual(oldStatus);
     });
 
     it('Should patch status', () => {
-      taskEntity.patch({status});
+      taskEntity.patch({ status });
 
       expect(taskEntity.status).toEqual(status);
       expect(taskEntity.title).toEqual(oldTitle);
     });
 
     it('Should patch title, status', () => {
-      taskEntity.patch({title, status});
+      taskEntity.patch({ title, status });
 
       expect(taskEntity.status).toEqual(status);
       expect(taskEntity.title).toEqual(title);
@@ -54,5 +57,7 @@ describe('TaskEntity', () => {
       expect(taskEntity.status).toEqual(oldStatus);
       expect(taskEntity.title).toEqual(oldTitle);
     });
+
   });
+
 });
