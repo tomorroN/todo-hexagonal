@@ -20,13 +20,13 @@ export class ConfigService {
     return this;
   }
 
-  public getPort() {
+  get port() {
     return this.getValue('PORT', true);
   }
 
   public isProduction() {
     const mode = this.getValue('MODE', false);
-    return mode != 'DEV';
+    return mode !== 'LOCAL' && mode !== 'DEV';
   }
 
   public getTypeOrmConfig(): TypeOrmModuleOptions {

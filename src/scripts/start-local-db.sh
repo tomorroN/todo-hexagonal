@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-SERVER="database_server";
-PW="myecretpassword";
+SERVER="task_database_server";
+PW="mysecretpassword";
 DB="task_management";
 
 echo "echo stop & remove old docker [$SERVER] and starting new fresh instance of [$SERVER]"
