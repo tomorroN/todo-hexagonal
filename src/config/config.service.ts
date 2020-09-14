@@ -3,8 +3,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 require('dotenv').config();
 
 export class ConfigService {
-
-  constructor(private env: { [k: string]: string | undefined }) { }
+  constructor(private env: { [k: string]: string | undefined }) {}
 
   private getValue(key: string, throwOnMissing = true): string {
     const value = this.env[key];
@@ -12,15 +11,15 @@ export class ConfigService {
       throw new Error(`config error - missing env.${key}`);
     }
 
-    return value;
+    return value as string;
   }
 
-  public ensureValues(keys: string[]) {
+  public ensureValues(keys: string[]): ConfigService {
     keys.forEach(k => this.getValue(k, true));
     return this;
   }
 
-  get port() {
+  get port(): string {
     return this.getValue('PORT', true);
   }
 
@@ -52,16 +51,14 @@ export class ConfigService {
       ssl: this.isProduction(),
     };
   }
-
 }
 
-const configService = new ConfigService(process.env)
-  .ensureValues([
-    'POSTGRES_HOST',
-    'POSTGRES_PORT',
-    'POSTGRES_USER',
-    'POSTGRES_PASSWORD',
-    'POSTGRES_DATABASE'
-  ]);
+const configService = new ConfigService(process.env).ensureValues([
+  'POSTGRES_HOST',
+  'POSTGRES_PORT',
+  'POSTGRES_USER',
+  'POSTGRES_PASSWORD',
+  'POSTGRES_DATABASE',
+]);
 
 export { configService };

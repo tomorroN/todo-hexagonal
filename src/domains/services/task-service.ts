@@ -5,10 +5,7 @@ import { TaskPort } from '../ports/out/task.port';
 import { PatchTaskCommand } from '../ports/in/patch-task.command';
 
 export class TaskService implements TaskUseCases {
-  constructor(
-    private readonly _taskPort: TaskPort
-  ) {
-  }
+  constructor(private readonly _taskPort: TaskPort) {}
 
   createTask(command: CreateTaskCommand): Promise<TaskEntity> {
     return this._taskPort.save(TaskEntity.from(command));
@@ -24,4 +21,7 @@ export class TaskService implements TaskUseCases {
     return this._taskPort.save(task);
   }
 
+  getManyTasks(params: GetManyTasksCommand): Promise<TaskEntity[]> {
+    return this._taskPort.getMany();
+  }
 }

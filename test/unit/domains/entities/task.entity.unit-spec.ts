@@ -1,9 +1,10 @@
-import { TaskEntity, TaskStatus } from '../../../../src/domains/entities/task.entity';
+import {
+  TaskEntity,
+  TaskStatus,
+} from '../../../../src/domains/entities/task.entity';
 
 describe('TaskEntity', () => {
-
   describe('from', () => {
-
     it('Should create TaskEntity', () => {
       const title = 'title';
       const taskEntity = TaskEntity.from({ title });
@@ -16,7 +17,6 @@ describe('TaskEntity', () => {
       expect(taskEntity.title).toEqual(title);
       expect(taskEntity.status).toEqual(TaskStatus.IN_PROGRESS);
     });
-
   });
 
   describe('patch', () => {
@@ -57,7 +57,5 @@ describe('TaskEntity', () => {
       expect(taskEntity.status).toEqual(oldStatus);
       expect(taskEntity.title).toEqual(oldTitle);
     });
-
   });
-
 });

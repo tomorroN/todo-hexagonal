@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 
 export type TaskId = string;
 
@@ -21,10 +21,8 @@ export class TaskEntity {
     private readonly _id: TaskId,
     private _title: string,
     private _status: TaskStatus,
-    private readonly _createdAt: number
-  ) {
-  }
-
+    private readonly _createdAt: number,
+  ) {}
 
   get id(): TaskId {
     return this._id;
@@ -43,12 +41,7 @@ export class TaskEntity {
   }
 
   static from({ title }: TaskFrom): TaskEntity {
-    return new TaskEntity(
-      uuidv4(),
-      title,
-      TaskStatus.IN_PROGRESS,
-      Date.now()
-    );
+    return new TaskEntity(uuidV4(), title, TaskStatus.IN_PROGRESS, Date.now());
   }
 
   patch({ status, title }: TaskPatch) {

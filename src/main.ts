@@ -1,6 +1,6 @@
-import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
-import { configService } from "./config/config.service";
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { configService } from './config/config.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -8,5 +8,5 @@ async function bootstrap() {
 }
 
 bootstrap()
-  .then(() =>  console.log(`Server listening on port: ${configService.port}`))
+  .then(() => console.log(`Server listening on port: ${configService.port}`))
   .catch(() => process.exit(1));
