@@ -4,7 +4,7 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
 } from 'typeorm';
-import { Nullable } from "../utils/custom.types";
+import { Maybe } from "../utils/custom.types";
 
 export abstract class BaseOrmEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -29,5 +29,5 @@ export abstract class BaseOrmEntity {
   lastChangedBy!: string;
 
   @Column({ type: 'varchar', length: 300, nullable: true })
-  internalComment?: Nullable<string>;
+  internalComment?: Maybe<string>;
 }
