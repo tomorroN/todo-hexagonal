@@ -1,7 +1,7 @@
 import {
   TaskEntity,
   TaskStatus,
-} from '../../../../src/domains/entities/task.entity';
+} from '../task.entity';
 
 describe('TaskEntity', () => {
   describe('from', () => {
