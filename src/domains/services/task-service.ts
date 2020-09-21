@@ -20,8 +20,4 @@ export class TaskService implements TaskUseCases {
     task.patch(command);
     return this._taskPort.save(task);
   }
-
-  getManyTasks(params: GetManyTasksCommand): Promise<TaskEntity[]> {
-    return this._taskPort.getMany();
-  }
 }
