@@ -5,6 +5,7 @@ import { configService } from './config/config.service';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(configService.port);
+  // TODO: validation pipe
 }
 
 bootstrap()
