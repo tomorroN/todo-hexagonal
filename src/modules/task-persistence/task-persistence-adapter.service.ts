@@ -4,6 +4,7 @@ import { TaskEntity, TaskId } from '../../domains/entities/task.entity';
 import { TaskOrmEntity } from './task.orm-entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { TaskMapper } from './task.mapper';
 
 @Injectable()
 export class TaskPersistenceAdapterService implements TaskPort {
@@ -16,15 +17,14 @@ export class TaskPersistenceAdapterService implements TaskPort {
     const task = await this._taskRepository.findOne(taskId);
     if (!task) {
       // TODO: monads or error handling
+      throw new Error('Task not found');
     }
-    // TODO: Mapper to domain model
-    return (task as unknown) as TaskEntity;
+    return TaskMapper.mapToDomain(task);
   }
 
   async save(taskEntity: TaskEntity): Promise<TaskEntity> {
-    // TODO: Mapper to domain model
-    return await this._taskRepository.save(
-      taskEntity /*TODO: Mapper to orm entity*/,
+    return TaskMapper.mapToDomain(
+      await this._taskRepository.save(TaskMapper.mapToOrmEntity(taskEntity)),
     );
   }
 }
